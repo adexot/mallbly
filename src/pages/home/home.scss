@@ -1,0 +1,116 @@
+// #region
+.intro {
+    display: flex;
+    padding-left: 100px;
+    position: relative;
+}
+
+.introLeft {
+    padding: 300px 0 50px;
+    width: 20%;
+}
+
+.introCenter {
+    background-color: #000;
+    width: 60%;
+
+    h1 {
+        color: orange;
+        position: absolute;
+        top: 0;
+        left: 100px;
+        font-size: 4rem;
+        width: 500px;
+    }
+}
+
+.introRight {
+    padding-top: 150px;
+
+    &+div, h4 {
+        margin: 0;
+    }
+
+    .ctaBox {
+        padding-left: 30px;
+    }
+}
+
+.introSlider {
+    display: flex;
+    margin-top: 30px;
+    transform: translateX(-50%);
+}
+
+// #endregion
+
+
+// #region
+.info {
+    margin-top: 300px;
+    width: 100%;
+    height: 700px;
+}
+
+.infoBox {
+    width: 60%;
+    padding: 0 100px;
+
+    h1 {
+        font-size: 4rem;
+    }
+
+    p{
+        max-width: 500px;
+    }
+}
+
+.infoCTA {
+    margin-top: 50px;
+}
+// #endregion
+
+// #region
+.customer {
+    height: 500px;
+    width: 100%;
+    background-color: #f1f1f1;
+    position: relative;
+}
+
+.customerCommentBox {
+    position: absolute;
+    top: -50px;
+    left: 70px;
+    width: 400px;
+    background-color: #fff;
+    padding: 50px 50px 70px;
+    box-shadow: 0 2px 20px 10px rgba(0, 0, 0, 0.1);
+}
+
+.customerCommentButton {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translateY(50%);
+}
+.customerDetails {
+    margin: 40px 0;
+
+    h3,p {
+        margin: 0;
+    }
+}
+
+// #endregion
+
+
+// TODO: place this in general
+
+.button {
+    display: inline-block;
+    background-color: #000;
+    color: #fff;
+    padding: 20px 40px;
+    box-shadow: 0 2px 10px 1px rgba(0,0,0, 0.4);
+}
