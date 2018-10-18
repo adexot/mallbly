@@ -1,16 +1,16 @@
 // #region
 body {
-    background-color: #eee;
+    background-color: #e5e5e5;
 }
 
 .authContainer {
     margin: 50px auto 0;
-    max-width: 500px;
+    max-width: 400px;
 
     .logo {
         color: #aaa;
-        font-size: 2rem;
-        font-weight: bold;
+        font-size: 30px;
+        font-weight: 500;
         margin-bottom: 70px;
     }
 }
@@ -19,8 +19,12 @@ body {
     box-sizing: border-box;
     background-color: #fff;
     padding-top: 20px;
+    margin-top: 70px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 
     h1 {
+        font-size: 30px;
+        font-weight: 500;
         text-align: center;
     }
 }
@@ -30,7 +34,7 @@ body {
 
     .inputGroup {
         height: 70px;
-        padding: 0 50px;
+        padding: 0 40px;
     }
 
     input {
@@ -38,7 +42,7 @@ body {
         height: 40px;
         border: 0;
         border-bottom: 1px solid #f5f5f5;
-        font-size: 1.05rem;
+        font-size: 15px;
         outline: 0;
         transition: border-bottom .3s linear;
 
@@ -48,9 +52,9 @@ body {
     }
 
     p {
-        padding: 0 50px 20px;
-        font-size: 0.8rem;
-        color: #aaa;
+        padding: 0 40px 20px;
+        font-size: 12px;
+        color: #ccc;
     }
 }
 
@@ -60,7 +64,7 @@ body {
     border: 0;
     padding: 20px 40px;
     width: 100%;
-    font-size: 1.1rem;
+    font-size: 15px;
 }
 
 .textCenter {
@@ -68,7 +72,12 @@ body {
 }
 
 .alternativeDiv {
+    color: #929292;
     margin-top: 50px;
-}
 
+    .link{
+        color: #929292;
+        text-decoration: underline;
+    }
+}
 // #endregion

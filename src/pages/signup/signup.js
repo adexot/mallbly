@@ -4,8 +4,8 @@ import './signup.scss';
 
 const Home = () => (
    <div className='authContainer'>
-       <div className='textCenter logo'>
-           <span>Mallbly</span>
+       <div className='textCenter'>
+           < Link to='/' className ='logo'> mallbly </Link>
        </div>
        <div className='authBox'>
             <h1>Create an Account</h1>
@@ -36,7 +36,7 @@ const Home = () => (
        < div className='textCenter alternativeDiv'>
             <span>
                 Already have an account?
-                <Link to='/login'> Log In</Link>
+                <Link to='/login' className='link'> Log In</Link>
             </span>
         </div>
    </div>
