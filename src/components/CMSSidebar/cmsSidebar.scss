@@ -1,3 +1,7 @@
+*{
+    box-sizing: border-box;
+}
+
 .cmsSidebar {
     background-color: #000;
     color: #fff;
@@ -15,10 +19,15 @@
     li {
         display: block;
         cursor: pointer;
-        padding: 20px
+        padding: 20px;
+    }
+    li.logo {
+        border-bottom: 1px solid #414141;
+        padding: 15px 20px;
     }
 
     .menuListDown {
+        border-top: 1px solid #414141;
         position: absolute;
         bottom: 0;
         left: 0;
@@ -29,7 +38,7 @@
     position: fixed;
     bottom: 0;
     left: 0;
-    padding: 20px;
+    padding: 0;
     background-color: #000;
     color: #fff;
     cursor: pointer;
@@ -42,10 +51,59 @@
 }
 
 .sidebarContent {
+    box-sizing: border-box;
     width: 280px;
     height: 100vh;
     background-color: #fff;
     position: absolute;
     top: 0;
     left: 70px;
+    padding: 5px;
+}
+
+.menuHeader {
+    font-size: 20px;
+    font-weight: 600;
+    padding: 20px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.menuList {
+    padding-inline-start: 0;
+    padding: 18px 5px;
+    margin: 0;
+
+    li {
+        list-style: none;
+        margin-top: 20px;
+        position: relative;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #e8e8e8;
+        }
+
+        &:hover svg {
+            visibility: visible;
+        }
+
+    }
+
+    li input {
+        border: 0;
+        font-size: 15px;
+        padding: 15px 10px;
+        width: 100%;
+        cursor: pointer;
+        background-color: transparent;
+    }
+
+    li svg {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translate(-50%, -50%);
+        visibility: hidden;
+    }
 }
