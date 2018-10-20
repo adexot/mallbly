@@ -8,6 +8,7 @@
     display: inline-block;
     width: 70px;
     height: 100vh;
+    padding: 5px;
     position: relative;
     transition: transform .3s linear;
     z-index: 99;
@@ -19,18 +20,36 @@
     li {
         display: block;
         cursor: pointer;
-        padding: 20px;
+        padding: 10px 15px;
+        margin-top: 18px;
+        transition: background-color .25s linear;
+
+        &:hover {
+            background-color: #333333;
+            border-radius: 3px;
+        }
+
+        &:hover svg {
+            path {
+                fill: #fff;
+            }
+        }
     }
+
     li.logo {
         border-bottom: 1px solid #414141;
-        padding: 15px 20px;
+        padding: 15px 20px 12px;
+        margin-bottom: 18px;
+        margin-top: 0;
     }
 
     .menuListDown {
         border-top: 1px solid #414141;
+        padding: 5px;
         position: absolute;
         bottom: 0;
         left: 0;
+        right: 0;
     }
 }
 
@@ -59,59 +78,4 @@
     top: 0;
     left: 70px;
     padding: 5px;
-}
-
-.menuHeader {
-    font-size: 20px;
-    font-weight: 600;
-    padding: 20px;
-    text-transform: uppercase;
-    border-bottom: 1px solid #e6e6e6;
-}
-
-.menuList {
-    padding-inline-start: 0;
-    padding: 18px 5px;
-    margin: 0;
-
-    li {
-        list-style: none;
-        margin-top: 20px;
-        position: relative;
-        cursor: pointer;
-
-        &:hover {
-            background-color: #e8e8e8;
-        }
-
-        &:hover>span svg {
-            visibility: visible;
-        }
-
-        &:first-child {
-            margin-top: 0;
-        }
-    }
-
-    li input {
-        border: 0;
-        font-size: 15px;
-        padding: 15px 10px;
-        width: 100%;
-        cursor: pointer;
-        background-color: transparent;
-    }
-
-    li>span svg {
-        position: absolute;
-        top: 50%;
-        right: 0;
-        transform: translate(-50%, -50%);
-        visibility: hidden;
-    }
-}
-
-.pageActions {
-    display: flex;
-    justify-content: space-between;
 }

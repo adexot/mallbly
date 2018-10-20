@@ -1,0 +1,54 @@
+.menuHeader {
+    font-size: 20px;
+    font-weight: 600;
+    padding: 24px 20px 19px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.menuList {
+    padding-inline-start: 0;
+    padding: 18px 5px;
+    margin: 0;
+
+    li {
+        list-style: none;
+        margin-top: 20px;
+        position: relative;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #e8e8e8;
+        }
+
+        &:hover>span svg {
+            visibility: visible;
+        }
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    li input {
+        border: 0;
+        font-size: 15px;
+        padding: 15px 10px;
+        width: 100%;
+        cursor: pointer;
+        background-color: transparent;
+    }
+
+    li>span svg {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translate(-50%, -50%);
+        visibility: hidden;
+    }
+}
+
+.pageActions {
+    display: flex;
+    justify-content: space-between;
+}
