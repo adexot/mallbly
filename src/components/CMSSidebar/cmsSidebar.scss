@@ -84,10 +84,13 @@
             background-color: #e8e8e8;
         }
 
-        &:hover svg {
+        &:hover>span svg {
             visibility: visible;
         }
 
+        &:first-child {
+            margin-top: 0;
+        }
     }
 
     li input {
@@ -99,11 +102,16 @@
         background-color: transparent;
     }
 
-    li svg {
+    li>span svg {
         position: absolute;
         top: 50%;
         right: 0;
         transform: translate(-50%, -50%);
         visibility: hidden;
     }
+}
+
+.pageActions {
+    display: flex;
+    justify-content: space-between;
 }
