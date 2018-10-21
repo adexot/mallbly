@@ -1,5 +1,6 @@
 import React, {Fragment,} from 'react';
 import {Link,} from 'react-router-dom';
+import ReactSVG from 'react-svg';
 import styles from './home.module.scss';
 import Nav from '../../components/Nav';
 import Sidebar from '../../components/Sidebar';
@@ -18,20 +19,33 @@ const Home = () => (
                 <h1>
                     A beautiful website starts here
                 </h1>
+
+                <img src="images/banner-wedding.png" alt=""/>
             </div>
             <div className={styles.introRight}>
                 <div className={styles.ctaBox}>
-                    <img src="" alt="" />
+                    <ReactSVG src='arrow-right.svg' className={styles.arrow}/>
                     <div>See all</div>
                     <h4>Wedding Templates</h4>
                 </div>
-                <div className={styles.introSlider}>
-                    <ul>
+                {/* <div> */}
+                    <ul className={styles.introSlider}>
                         <li>
-                            <img src="" alt=""/>
+                            <img src="images/theme_3.png" alt=""/>
+                            <div className={styles.themeOverlay}>
+                                <a className={styles.button}>Choose Template</a>
+                                <a className={styles.button}>Preview template</a>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="images/theme_2.png" alt="" />
+                            <div className={styles.themeOverlay}>
+                                <a className={styles.button}>Choose Template</a>
+                                <a className={styles.button}>Preview template</a>
+                            </div>
                         </li>
                     </ul>
-                </div>
+                {/* </div> */}
             </div>
        </section>
 
@@ -43,13 +57,14 @@ In minim duis reprehenderit nisi sit irure nulla.Nulla incididunt ea sit ut inci
                </p>
                <Link to='/' className={composeClasses(styles.button, styles.infoCTA)}>Get Started</Link>
            </div>
-           <div></div>
+            <img src="images/bg-about.png" className={styles.aboutImage} alt=""/>
        </section>
 
        <section className={styles.customer}>
-           <div className={styles.customerCommentBox}>
+            <img src="images/bg-burna_boy.png" alt=""/>
+            <div className={styles.customerCommentBox}>
             <h2>
-                I want a website that reflects who I am - with exactly the features I need. That's Mallbly.
+                "I want a website that reflects who I am - with exactly the features I need. That's Mallbly. "
             </h2>
             <div className={styles.customerDetails}>
                 <h3>BurnaBoy</h3>

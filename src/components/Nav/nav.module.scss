@@ -9,15 +9,21 @@
     padding: 0 100px;
 }
 
-.leftNav li {
-    display: inline-block;
+.centerNav {
+    font-size: 30px;
+    font-weight: 500;
 }
 
-.leftNav li a{
-    padding-right: 30px;
+.leftNav li {
+    display: inline-block;
+
+    a {
+        padding-right: 30px;
+    }
 }
 
 a {
+    font-size: 15px;
     color: #000;
     text-decoration: none;
 

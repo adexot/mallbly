@@ -10,8 +10,8 @@ class CMSSidebar extends Component {
     constructor(props){
         super(props);
         this.state = {
-            isClose: false,
-            activeSection: 'pages',
+            isClose: true,
+            activeSection: '',
         };
     }
 

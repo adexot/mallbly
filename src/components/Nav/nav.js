@@ -14,7 +14,7 @@ const Nav = () => (
                 </li>
             </ul>
         </div>
-        <div className={styles.centerNav}>Mallbly</div>
+        <div className={styles.centerNav}>mallbly</div>
         <div className={styles.rightNav}>
             <Link to='/signup'>Log In / Sign Up</Link>
         </div>
