@@ -1,6 +1,7 @@
 import React, {Component, Fragment,} from 'react';
-import './cmsSidebar.scss';
+import styles from './cmsSidebar.module.scss';
 import ReactSVG from 'react-svg';
+import {composeClasses} from '../../utils';
 import Pages from './pages';
 import General from './general';
 import Theme from './theme';
@@ -10,14 +11,15 @@ class CMSSidebar extends Component {
         super(props);
         this.state = {
             isClose: false,
-            activeSection: '',
+            activeSection: 'pages',
         };
     }
 
     closeSidebar(e){
         e.preventDefault();
         this.setState({
-            isClose: true
+            isClose: true,
+            activeSection: '',
         });
     }
 
@@ -28,7 +30,7 @@ class CMSSidebar extends Component {
         });
     }
 
-    sectionChange(name){
+    sectionChange(name=''){
         this.setState({
             activeSection: name
         });
@@ -49,13 +51,11 @@ class CMSSidebar extends Component {
 
     render(){
         const {isClose, activeSection, } = this.state;
-        const sidebarClass = `cmsSidebar ${isClose ? 'close' : ''}`;
-        const openButtonClass = `openButton ${isClose ? 'showButton' : ''}`;
         return (
             <Fragment>
-                <div className={sidebarClass}>
-                    <ul className=''>
-                        <li className='logo'>
+                <div className={composeClasses(styles.cmsSidebar, isClose ? styles.close : '')}>
+                    <ul className={styles.cmsidebar}>
+                        <li className={styles.logo}>
                             <ReactSVG src='logo.svg'/>
                         </li>
                         <li onClick={() => this.sectionChange('general')}>
@@ -71,21 +71,32 @@ class CMSSidebar extends Component {
                             <ReactSVG src = 'folder.svg' / >
                         </li>
                     </ul>
-                    <ul className='menuListDown'>
+                    <ul className={styles.menuListDown}>
                         <li onClick={(e) => this.closeSidebar(e)}>
                             <ReactSVG src = 'open.svg' / >
                         </li>
-                        <li onClick={() => this.sectionChange('profile')}>
+                        <li onClick={() => this.renderSectionContent()}>
                             <ReactSVG src='user.svg' />
                         </li>
                     </ul>
                 </div>
 
-                <div className='sidebarContent'>
-                    {this.renderSectionContent(activeSection)}
+                <div className={composeClasses(styles.cmsModal, activeSection ? styles.open : '')}>
+                    <div className={composeClasses(styles.sidebarContent, activeSection && styles.open)}>
+                        {this.renderSectionContent(activeSection)}
+                    </div>
+                    <button
+                        className={styles.closeSection}
+                        onClick={() => this.sectionChange()}
+                    >
+                        <ReactSVG src='close-section.svg' />
+                    </button>
                 </div>
 
-                <button className={openButtonClass} onClick={(e) => this.openSidebar(e)}>
+                <button
+                    className={composeClasses(styles.openButton, isClose ? styles.showButton : '')}
+                    onClick={(e) => this.openSidebar(e)}
+                >
                     <ReactSVG src='close.svg'/>
                 </button>
             </Fragment>

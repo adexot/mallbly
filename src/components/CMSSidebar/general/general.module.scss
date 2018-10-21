@@ -1,0 +1,146 @@
+.menuHeader {
+    font-size: 20px;
+    font-weight: 600;
+    padding: 24px 20px 19px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.formBox {
+    padding: 32px 15px;
+}
+
+.inputGroup {
+
+    label {
+        display: block;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    input {
+        border: 1px solid #b6b6b6;
+        border-radius: 3px;
+        font-size: 14px;
+        padding: 15px;
+        margin-top: 11px;
+        width: 100%;
+        outline: none;
+        transition: border .3s linear;
+
+        &:focus {
+            border: 1px solid #000;
+        }
+    }
+}
+
+hr {
+    margin-block-start: 21px;
+    margin-block-end: 21px;
+    border: 0.5px solid #e8e8e8;
+}
+
+.logoContainer {
+    width: 100%;
+    height: 180px;
+    background-color: #f2f2f2;
+    margin-top: 16px;
+    padding: 8px 10px;
+}
+
+.logoUpload {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 220px;
+    height: 132px;
+    background-color: #fff;
+
+    input {
+        display: none;
+    }
+}
+
+.logoName{
+    color: #808080;
+    font-size: 13px;
+    margin-top: 12px;
+}
+
+.uploadButton {
+    color: #fff;
+    background-color: #000;
+    border: 0;
+    font-size: 13px;
+    padding: 11px 21px;
+    cursor: pointer;
+}
+
+.uploadActions{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+
+    button {
+        border: 0;
+        color: #fff;
+        font-size: 13px;
+        cursor: pointer;
+    }
+
+    .edit {
+        background-color: #000;
+        padding: 11px 32px;
+    }
+
+    .remove {
+        background-color: #f38383;
+        padding: 11px 13px;
+
+        div {
+            display: inline-block;
+            margin-right: 5px;
+        }
+    }
+}
+
+.logoInfo {
+    color: #979797;
+    font-size: 12px;
+    padding: 10px 0;
+}
+
+.colorHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .title {
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .helpText {
+        font-size: 11px;
+        color: #bdbdbd;
+    }
+}
+
+.colorBox {
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    margin-top: 10px;
+
+    input[type='color'] {
+        border: 0;
+        padding: 0;
+        margin: 0;
+        height: 30px;
+        width: 30px;
+        cursor: pointer;
+        outline: none;
+    }
+}

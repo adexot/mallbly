@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link, } from 'react-router-dom';
-import './nav.scss';
+import styles from './nav.module.scss';
 
 const Nav = () => (
-    <div className='nav'>
-        <div className="leftNav">
+    <div className={styles.nav}>
+        <div className={styles.leftNav}>
             <ul>
                 <li>
                     <Link to='/pricing'>Pricing</Link>
@@ -14,8 +14,8 @@ const Nav = () => (
                 </li>
             </ul>
         </div>
-        <div className="centerNav">Mallbly</div>
-        <div className="rightNav">
+        <div className={styles.centerNav}>Mallbly</div>
+        <div className={styles.rightNav}>
             <Link to='/signup'>Log In / Sign Up</Link>
         </div>
     </div>
