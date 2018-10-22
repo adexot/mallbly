@@ -10,7 +10,7 @@ const Home = () => (
        </div>
        <div className={styles.authBox}>
             <h1>Create an Account</h1>
-            <form action="">
+            <form action="/cms">
                 <div className={styles.inputGroup}>
                     <label htmlFor="firstName"></label>
                     <input type="text" placeholder='First Name'/>
@@ -37,7 +37,7 @@ const Home = () => (
        < div className={composeClasses(styles.textCenter, styles.alternativeDiv)}>
             <span>
                 Already have an account?
-                <Link to='/login' className={styles.link}> Log In</Link>
+                <Link to='/signup' className={styles.link}> Log In</Link>
             </span>
         </div>
    </div>
