@@ -4,14 +4,13 @@ body {
 }
 
 .authContainer {
-    margin: 50px auto 0;
+    margin: 25px auto 0;
     max-width: 400px;
 
     .logo {
         color: #aaa;
         font-size: 30px;
         font-weight: 500;
-        margin-bottom: 70px;
     }
 }
 
@@ -65,6 +64,8 @@ body {
     padding: 20px 40px;
     width: 100%;
     font-size: 15px;
+    display: block;
+    text-align: center;
 }
 
 .textCenter {
@@ -73,7 +74,7 @@ body {
 
 .alternativeDiv {
     color: #929292;
-    margin-top: 50px;
+    margin-top: 40px;
 
     .link{
         color: #929292;

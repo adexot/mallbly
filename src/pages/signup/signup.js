@@ -25,13 +25,14 @@ const Home = () => (
                 </div>
                 <div className={styles.inputGroup}>
                     <label htmlFor="password"></label>
-                    <input type="password" placeholder='First Name'/>
+                    <input type="password" placeholder='Password'/>
                 </div>
                 <p>
                     By creating an account, you agree to our Terms of Service and have read and understood the Privacy Policy.
                 </p>
-z
-                <button className={styles.authButton}>Create Account</button>
+                {/* TODO: uncomment when the login action is implemented */}
+                {/* <button className={styles.authButton}>Create Account</button> */}
+                <Link to='/cms' className={styles.authButton}>Create Account</Link>
             </form>
        </div>
        < div className={composeClasses(styles.textCenter, styles.alternativeDiv)}>
