@@ -5,13 +5,14 @@ import {composeClasses} from '../../utils';
 import Pages from './pages';
 import General from './general';
 import Theme from './theme';
+import Profile from './profile';
 
 class CMSSidebar extends Component {
     constructor(props){
         super(props);
         this.state = {
-            isClose: true,
-            activeSection: '',
+            isClose: false,
+            activeSection: 'theme',
         };
     }
 
@@ -44,6 +45,8 @@ class CMSSidebar extends Component {
                 return <General />;
             case 'theme':
                 return <Theme />;
+            case 'profile':
+                return <Profile />;
             default:
                 break;
         }
@@ -75,7 +78,7 @@ class CMSSidebar extends Component {
                         <li onClick={(e) => this.closeSidebar(e)}>
                             <ReactSVG src = 'open.svg' / >
                         </li>
-                        <li onClick={() => this.renderSectionContent()}>
+                        <li onClick={() => this.sectionChange('profile')}>
                             <ReactSVG src='user.svg' />
                         </li>
                     </ul>

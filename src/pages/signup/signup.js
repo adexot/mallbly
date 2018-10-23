@@ -30,7 +30,7 @@ const Home = () => (
                 <p>
                     By creating an account, you agree to our Terms of Service and have read and understood the Privacy Policy.
                 </p>
-
+z
                 <button className={styles.authButton}>Create Account</button>
             </form>
        </div>

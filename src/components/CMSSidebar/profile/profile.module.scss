@@ -1,0 +1,82 @@
+.menuHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 24px 20px 19px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.updateButton {
+    display: inline-block;
+    background-color: #000;
+    border: 0;
+    color: #fff;
+    font-size: 12px;
+    padding: 7px 20px;
+    transition: all .3s linear;
+
+    &:hover {
+        background-color: #fff;
+        box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.25);
+        color: #000;
+        cursor: pointer;
+    }
+}
+
+.formBox {
+    padding: 2px 15px;
+}
+
+.inputGroup {
+    margin-top: 30px;
+
+    label {
+        display: block;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    input {
+        border: 1px solid #b6b6b6;
+        border-radius: 3px;
+        font-size: 14px;
+        padding: 15px;
+        margin-top: 11px;
+        width: 100%;
+        outline: none;
+        transition: border .3s linear;
+
+        &:focus {
+            border: 1px solid #000;
+        }
+    }
+}
+
+.logoutContainer {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+
+    .logoutButton {
+        background-color: #fff6db;
+        border: 0;
+        color: #000;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        outline: none;
+        padding: 14px 0;
+        width: 100%;
+        transition: transform .25s linear;
+
+        &:hover {
+            box-shadow: 0 5px 10px 0 rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+        }
+    }
+}
+
