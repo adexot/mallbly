@@ -4,15 +4,16 @@ import ReactSVG from 'react-svg';
 import {composeClasses} from '../../utils';
 import Pages from './pages';
 import General from './general';
-import Theme from './theme';
+import {Theme, ChangeTheme} from './theme';
 import Profile from './profile';
 
 class CMSSidebar extends Component {
     constructor(props){
         super(props);
         this.state = {
-            isClose: true,
-            activeSection: '',
+            isClose: false,
+            activeSection: 'changeTheme',
+            isFull: true
         };
     }
 
@@ -37,6 +38,12 @@ class CMSSidebar extends Component {
         });
     }
 
+    setFullSectionContent(value) {
+        this.setState({
+            isFull: value
+        });
+    }
+
     renderSectionContent(section) {
         switch(section){
             case 'pages':
@@ -47,13 +54,16 @@ class CMSSidebar extends Component {
                 return <Theme />;
             case 'profile':
                 return <Profile />;
+            case 'changeTheme':
+                // this.setFullSectionContent();
+                return <ChangeTheme />;
             default:
                 break;
         }
     }
 
     render(){
-        const {isClose, activeSection, } = this.state;
+        const {isClose, activeSection, isFull } = this.state;
         return (
             <Fragment>
                 <div className={composeClasses(styles.cmsSidebar, isClose ? styles.close : '')}>
@@ -85,15 +95,20 @@ class CMSSidebar extends Component {
                 </div>
 
                 <div className={composeClasses(styles.cmsModal, activeSection ? styles.open : '')}>
-                    <div className={composeClasses(styles.sidebarContent, activeSection && styles.open)}>
+                    <div className={composeClasses(styles.sidebarContent, activeSection && styles.open, isFull ? styles.full : '')}>
                         {this.renderSectionContent(activeSection)}
                     </div>
-                    <button
-                        className={styles.closeSection}
-                        onClick={() => this.sectionChange()}
-                    >
-                        <ReactSVG src='close-section.svg' />
-                    </button>
+                    {
+                        isFull ?
+                            null:
+                            <button
+                                className={styles.closeSection}
+                                onClick={() => this.sectionChange()}
+                            >
+                                <ReactSVG src='close-section.svg' />
+                            </button>
+                    }
+
                 </div>
 
                 <button

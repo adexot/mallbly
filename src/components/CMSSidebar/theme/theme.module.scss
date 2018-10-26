@@ -1,9 +1,28 @@
 .menuHeader {
+    display: flex;
+    justify-content: space-between;
     font-size: 20px;
     font-weight: 600;
     padding: 24px 20px 19px;
     text-transform: uppercase;
     border-bottom: 1px solid #e6e6e6;
+}
+
+.changeButton {
+    display: inline-block;
+    background-color: #000;
+    border: 0;
+    color: #fff;
+    font-size: 12px;
+    padding: 7px 20px;
+    transition: all .3s linear;
+
+    &:hover {
+        background-color: #fff;
+        box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.25);
+        color: #000;
+        cursor: pointer;
+    }
 }
 
 .themeContainer {
@@ -27,5 +46,59 @@
     .description {
         color: #979797;
         font-size: 12px;
+    }
+}
+
+.changeTheme {
+    padding: 40px 50px 40px;
+
+    header {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+}
+
+.flexContainer {
+    display: flex;
+    width: 100%;
+}
+
+.sidebarContainer {
+    width: 28.5%;
+
+    h4 {
+        font-size: 15px;
+    }
+}
+
+.themeListing {
+    width: 71.5%;
+    height: 80vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    overflow-y: auto;
+    padding-top: 10px;
+}
+
+.themeItem {
+    cursor: pointer;
+    width: 400px;
+    margin-bottom: 80px;
+    transition: font-weight 0.05s ease-in-out;
+
+    img {
+        width: 100%;
+        display: block;
+    }
+
+    .title {
+        font-size: 15px;
+        margin-top: 15px;
+    }
+
+    &:hover {
+        font-weight: 500;
     }
 }

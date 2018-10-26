@@ -33,15 +33,15 @@ const Home = () => (
                         <li>
                             <img src="images/theme_3.png" alt=""/>
                             <div className={styles.themeOverlay}>
-                                <a className={styles.button}>Choose Template</a>
-                                <a className={styles.button}>Preview template</a>
+                                <a className={styles.button}>Preview Template</a>
+                                <a className={styles.button}>Start with this template</a>
                             </div>
                         </li>
                         <li>
                             <img src="images/theme_2.png" alt="" />
                             <div className={styles.themeOverlay}>
-                                <a className={styles.button}>Choose Template</a>
-                                <a className={styles.button}>Preview template</a>
+                                <a className={styles.button}>Preview Template</a>
+                                <a className={styles.button}>Start with this template</a>
                             </div>
                         </li>
                     </ul>

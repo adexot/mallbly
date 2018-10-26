@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link, } from 'react-router-dom';
+import ReactSVG from 'react-svg';
 import styles from './sidebar.module.scss';
 
 const menuList = [
@@ -14,15 +15,54 @@ const menuList = [
     'More categories'
 ];
 
+const menuNav = [
+    {
+        img: 'music.svg',
+        title: 'Music'
+    },
+    {
+        img: 'corporate.svg',
+        title: 'Corporate'
+    },
+    {
+        img: 'wedding.svg',
+        title: 'Wedding'
+    },
+    {
+        img: 'art.svg',
+        title: 'Art & Design'
+    },
+    {
+        img: 'food.svg',
+        title: 'Food & Drink'
+    },
+    {
+        img: 'health.svg',
+        title: 'Health & Fitness'
+    },
+    {
+        img: 'photography.svg',
+        title: 'Photography'
+    },
+    {
+        img: 'fashion.svg',
+        title: 'Fashion & Beauty'
+    },
+    {
+        img: 'more.svg',
+        title: 'More categories'
+    }
+];
+
 const Sidebar = ({active}) => (
     <div className={styles.sidebar}>
         <ul>
             {
-                menuList.map((menu, index) => (
+                menuNav.map((menu, index) => (
                     <li key={index}>
                         <Link to='/' className={active === menuList[index] ? styles.active : ''}>
-                            <img src="" alt=""/>
-                            <span>{menu}</span>
+                            <ReactSVG src={menu.img}/>
+                            <span>{menu.title}</span>
                         </Link>
                     </li>
                 ))

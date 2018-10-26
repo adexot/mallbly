@@ -108,6 +108,10 @@
     }
 }
 
+.full {
+    width: calc(100% - 70px);
+}
+
 .closeSection {
     position: absolute;
     top: 0;
