@@ -6,13 +6,14 @@ import Pages from './pages';
 import General from './general';
 import {Theme, ChangeTheme} from './theme';
 import Profile from './profile';
+import Gallery from './gallery';
 
 class CMSSidebar extends Component {
     constructor(props){
         super(props);
         this.state = {
             isClose: false,
-            activeSection: 'changeTheme',
+            activeSection: 'gallery',
             isFull: true
         };
     }
@@ -38,9 +39,10 @@ class CMSSidebar extends Component {
         });
     }
 
-    setFullSectionContent(value) {
+    setFullSectionContent(value, name) {
         this.setState({
-            isFull: value
+            isFull: value,
+            activeSection: name
         });
     }
 
@@ -54,6 +56,8 @@ class CMSSidebar extends Component {
                 return <Theme />;
             case 'profile':
                 return <Profile />;
+            case 'gallery':
+                return <Gallery />;
             case 'changeTheme':
                 // this.setFullSectionContent();
                 return <ChangeTheme />;

@@ -50,7 +50,7 @@
 }
 
 .changeTheme {
-    padding: 40px 50px 40px;
+    padding: 0 50px;
 
     header {
         font-size: 20px;
@@ -66,6 +66,11 @@
 
 .sidebarContainer {
     width: 28.5%;
+    padding-top: 40px;
+
+    header {
+        margin-bottom: 32px;
+    }
 
     h4 {
         font-size: 15px;
@@ -74,12 +79,11 @@
 
 .themeListing {
     width: 71.5%;
-    height: 80vh;
+    height: 100vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     overflow-y: auto;
-    padding-top: 10px;
 }
 
 .themeItem {
@@ -87,6 +91,10 @@
     width: 400px;
     margin-bottom: 80px;
     transition: font-weight 0.05s ease-in-out;
+
+    :first-child {
+        margin-top: 90px;
+    }
 
     img {
         width: 100%;

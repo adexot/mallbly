@@ -21,11 +21,14 @@ const themeList = [
     }
 ];
 
-export const Theme = () => (
+export const Theme = ({changeThemeFn}) => (
     <div className='pages'>
         <div className={styles.menuHeader}>
             <span>Theme</span>
-        <button className={styles.changeButton}>Change</button>
+        <button
+            className={styles.changeButton}
+            onClick={() => changeThemeFn()}
+        >Change</button>
         </div>
         <div className={styles.themeContainer}>
             <div className={styles.themeBox}></div>
@@ -39,9 +42,9 @@ export const Theme = () => (
 
 export const ChangeTheme = () => (
     <div className={styles.changeTheme}>
-        <header>CHANGE THEME</header>
         <div className={styles.flexContainer}>
             <div className={styles.sidebarContainer}>
+                <header>CHANGE THEME</header>
                 <h4>TOP CATEGOROIES</h4>
                 <Sidebar />
             </div>
@@ -49,7 +52,7 @@ export const ChangeTheme = () => (
             {
                 themeList && Array.isArray(themeList) && themeList.map((theme, index) => (
                     <div className={styles.themeItem}>
-                        <img src={theme.image} alt />
+                        <img src={theme.image} alt={theme.title} />
                         <div className={styles.title}>{theme.title}</div>
                     </div>
                 ))

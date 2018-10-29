@@ -18,10 +18,17 @@
         display: inline-block;
         padding: 20px 0;
         color: #aaa;
-        transition: color .3s ease-in-out;
+
+        span {
+            transition: all .3s ease-in-out;
+        }
 
         &:hover {
-            color: #000;
+            span {
+                color: #000;
+                font-size: 20px;
+                font-weight: 600;
+            }
 
             svg {
                 fill: #000;
