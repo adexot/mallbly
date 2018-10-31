@@ -13,8 +13,8 @@ class CMSSidebar extends Component {
         super(props);
         this.state = {
             isClose: false,
-            activeSection: 'gallery',
-            isFull: true
+            activeSection: '',
+            isFull: false
         };
     }
 
@@ -33,16 +33,10 @@ class CMSSidebar extends Component {
         });
     }
 
-    sectionChange(name=''){
+    setFullSectionContent(name, value=false) {
         this.setState({
-            activeSection: name
-        });
-    }
-
-    setFullSectionContent(value, name) {
-        this.setState({
-            isFull: value,
-            activeSection: name
+            activeSection: name,
+            isFull: value
         });
     }
 
@@ -53,13 +47,12 @@ class CMSSidebar extends Component {
             case 'general':
                 return <General />;
             case 'theme':
-                return <Theme />;
+                return <Theme changeThemeFn={() => this.setFullSectionContent('changeTheme', true)}/>;
             case 'profile':
                 return <Profile />;
             case 'gallery':
                 return <Gallery />;
             case 'changeTheme':
-                // this.setFullSectionContent();
                 return <ChangeTheme />;
             default:
                 break;
@@ -75,16 +68,16 @@ class CMSSidebar extends Component {
                         <li className={styles.logo}>
                             <ReactSVG src='logo.svg'/>
                         </li>
-                        <li onClick={() => this.sectionChange('general')}>
+                        <li onClick={() => this.setFullSectionContent('general')}>
                             <ReactSVG src = 'home.svg' / >
                         </li>
-                        <li onClick={() => this.sectionChange('pages')}>
+                        <li onClick={() => this.setFullSectionContent('pages')}>
                             <ReactSVG src = 'stack.svg' / >
                         </li>
-                        <li onClick={() => this.sectionChange('theme')}>
+                        <li onClick={() => this.setFullSectionContent('theme')}>
                             <ReactSVG src = 'window.svg' / >
                         </li>
-                        <li onClick={() => this.sectionChange('gallery')}>
+                        <li onClick={() => this.setFullSectionContent('gallery', true)}>
                             <ReactSVG src = 'folder.svg' / >
                         </li>
                     </ul>
@@ -92,7 +85,7 @@ class CMSSidebar extends Component {
                         <li onClick={(e) => this.closeSidebar(e)}>
                             <ReactSVG src = 'open.svg' / >
                         </li>
-                        <li onClick={() => this.sectionChange('profile')}>
+                        <li onClick={() => this.setFullSectionContent('profile')}>
                             <ReactSVG src='user.svg' />
                         </li>
                     </ul>
@@ -107,7 +100,7 @@ class CMSSidebar extends Component {
                             null:
                             <button
                                 className={styles.closeSection}
-                                onClick={() => this.sectionChange()}
+                                onClick={() => this.setFullSectionContent()}
                             >
                                 <ReactSVG src='close-section.svg' />
                             </button>
