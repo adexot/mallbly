@@ -1,9 +1,10 @@
 .gallery {
+    height: 100%;
     padding: 50px 50px 0;
     position: relative;
     overflow-x: hidden;
 
-    header {
+    & > header {
         font-size: 20px;
         font-weight: bold;
         margin-bottom: 20px;
@@ -17,6 +18,12 @@
 
 .sidebarContainer {
     width: 25%;
+
+    & > header {
+        margin-bottom: 30px;
+        font-size: 18px;
+        font-weight: 600;
+    }
 
     h4 {
         font-size: 15px;
@@ -71,6 +78,7 @@
 .albumListing {
     display: flex;
     flex-wrap: wrap;
+    margin-top: 25px;
 }
 
 .galleryItem {
@@ -104,7 +112,8 @@
     top: 0;
     right: 0;
     transform: translateX(100%);
-    height: 100vh;
+    height: 100%;
+    overflow-y: auto;
     width: 500px;
     background-color: #fff;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25);
@@ -121,6 +130,15 @@
             cursor: pointer;
         }
 
+        span h3 {
+            margin: 0;
+        }
+
+        h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
         svg {
             height: 15px;
             width: 15px;
@@ -129,8 +147,169 @@
             }
         }
     }
+
+    .content {
+        padding: 30px 50px;
+    }
 }
 
 .open {
     transform: translateX(0);
+}
+
+.inputGroup {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+
+    label {
+        width: 30%;
+        font-size: 15px;
+    }
+
+    input, textarea {
+        width: 70%;
+        border: 1px solid #b6b6b6;
+        border-radius: 3px;
+        outline: 0;
+        font-size: 15px;
+        padding: 0 10px;
+    }
+
+    input {
+        height: 40px;
+    }
+
+    .continueButton {
+        display: inline-block;
+        background-color: #000;
+        border: 0;
+        color: #fff;
+        font-size: 12px;
+        padding: 7px 20px;
+        transition: all .3s linear;
+        outline: none;
+
+        &:hover {
+            background-color: #fff;
+            box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.25);
+            color: #000;
+            cursor: pointer;
+        }
+    }
+}
+
+.reverseFlex {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: 50px;
+
+    .addTrackButton {
+        display: block;
+        width: 70%;
+        text-align: left;
+        border: 0;
+        font-size: 15px;
+        font-weight: 600;
+        margin-top: -15px; // HACK: fix the :last-of-type not working on .inputGroup selector
+    }
+
+    .continueButton {
+        cursor: pointer;
+        height: 40px;
+        display: block;
+        background-color: #000;
+        border: 0;
+        color: #fff;
+        font-size: 15px;
+        padding: 7px 20px;
+        transition: all .3s linear;
+        outline: none;
+        width: 70%;
+
+        &:hover {
+            background-color: #fff;
+            box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.25);
+            color: #000;
+        }
+    }
+}
+
+.albumCoverContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+
+    .image {
+        height: 110px;
+        width: 110px;
+        background-color: #f2f2f2;
+        margin-right: 20px;
+    }
+
+    .imageUpload {
+        height: 110px;
+        flex: 1;
+        background-color: #f2f2f2;
+        border: dashed 2px #e8e8e8;
+    }
+}
+
+.urlDownloadHeader {
+    position: relative;
+    margin-bottom: 21px;
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 48%;
+        right: 0;
+        transform: translateY(-50%);
+        height: 1px;
+        background-color: #ccc;
+    }
+}
+
+.album {
+    &Image {
+        background-color: #c4c4c4;
+        height: 300px;
+        width: 300px;
+    }
+
+    &Details {
+        font-size: 14px;
+        line-height: 1.52;
+
+        &Header {
+            h3 {
+                display: inline-block;
+            }
+
+            &+h4 {
+                margin: 0;
+            }
+        }
+
+        h4 {
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style-type: decimal-leading-zero;
+            margin-bottom: 20px;
+
+            li {
+                margin-inline-start: 25px;
+            }
+        }
+    }
+}
+
+// Utility class
+.grey {
+    color: #828282;
 }
