@@ -7,13 +7,14 @@ import General from './general';
 import {Theme, ChangeTheme} from './theme';
 import Profile from './profile';
 import Gallery from './gallery';
+import Domain from './domain';
 
 class CMSSidebar extends Component {
     constructor(props){
         super(props);
         this.state = {
             isClose: false,
-            activeSection: '',
+            activeSection: 'domain',
             isFull: false
         };
     }
@@ -54,6 +55,8 @@ class CMSSidebar extends Component {
                 return <Gallery />;
             case 'changeTheme':
                 return <ChangeTheme />;
+            case 'domain':
+                return <Domain />;
             default:
                 break;
         }
@@ -92,7 +95,7 @@ class CMSSidebar extends Component {
                 </div>
 
                 <div className={composeClasses(styles.cmsModal, activeSection ? styles.open : '')}>
-                    <div className={composeClasses(styles.sidebarContent, activeSection && styles.open, isFull ? styles.full : '')}>
+                    <div className={composeClasses(styles.sidebarContent, activeSection && styles.open, isFull ? styles.full : '', activeSection === 'domain' ? styles.right : '')}>
                         {this.renderSectionContent(activeSection)}
                     </div>
                     {

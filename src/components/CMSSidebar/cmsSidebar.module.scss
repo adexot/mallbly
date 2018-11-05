@@ -106,6 +106,17 @@
     &.open {
         margin-left: 70px;
     }
+
+    &.right {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 500px;
+    }
+
+    &+.closeSection {
+        right: 520px;
+    }
 }
 
 .full {
