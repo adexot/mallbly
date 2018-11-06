@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Home from './pages/home';
 import Signup from './pages/signup';
 import CMS from './pages/cms';
+import Domain from './pages/domain';
 
 const App = () => (
   <Router>
@@ -10,6 +11,7 @@ const App = () => (
       <Route exact path='/' component={Home} />
       <Route exact path='/cms' component={CMS} />
       <Route exact path='/signup' component={Signup} />
+      <Route exact path='/domain' component={Domain} />
     </Fragment>
   </Router>
 );

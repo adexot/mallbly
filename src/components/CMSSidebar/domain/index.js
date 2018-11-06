@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactSVG from 'react-svg';
+import {Link} from 'react-router-dom';
 import { composeClasses } from '../../../utils';
 import styles from './domain.module.scss';
 
@@ -29,9 +30,9 @@ const Domain = () => (
                 </div>
             </div>
             <div>
-                <button className={styles.continueButton}>
+                <Link to='/domain' className={styles.continueButton}>
                     Continue
-                </button>
+                </Link>
             </div>
         </form>
     </div>
