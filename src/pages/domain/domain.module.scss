@@ -70,6 +70,7 @@
         &.unavailable {
             color: #5d5d5d;
             cursor: not-allowed;
+            // pointer-events: none;
         }
     }
 
