@@ -4,6 +4,7 @@ import Home from './pages/home';
 import Signup from './pages/signup';
 import CMS from './pages/cms';
 import Domain from './pages/domain';
+import WhoIs from './pages/whois';
 
 const App = () => (
   <Router>
@@ -12,6 +13,7 @@ const App = () => (
       <Route exact path='/cms' component={CMS} />
       <Route exact path='/signup' component={Signup} />
       <Route exact path='/domain' component={Domain} />
+      <Route exact path='/whois' component={WhoIs} />
     </Fragment>
   </Router>
 );
