@@ -106,7 +106,7 @@ class Domain extends Component {
                 </ul>
                 <div className={composeClasses(styles.selectedOption, selectedOption && styles.show)}>
                     <p>for N3,400 per year</p>
-                    <Link to='#' className={styles.continueButton}>Continue</Link>
+                    <Link to='/pricing' className={styles.continueButton}>Continue</Link>
                 </div>
             </div>
         );
