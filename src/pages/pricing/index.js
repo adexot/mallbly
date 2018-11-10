@@ -1,7 +1,8 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import ReactSVG from 'react-svg';
 import styles from './pricing.module.scss';
 import {composeClasses} from '../../utils';
+import {paymentGateway} from '../../config';
 
 
 const subscriptionPlans = {
@@ -27,12 +28,19 @@ const domainDetails = {
     description: 'This should explain what domain is about and make it simpler to buy.'
 }
 
+const checkoutSteps = {
+    ONE: 'checkoutDetails',
+    TWO: 'paymentGateway',
+    THREE: 'paymentResult'
+};
+
 class Pricing extends Component{
     constructor(props){
         super(props);
 
         this.state = {
-            selectedSubscription: null
+            selectedSubscription: null,
+            checkoutStep: checkoutSteps.ONE,
         };
     }
 
@@ -55,15 +63,113 @@ class Pricing extends Component{
         );
     }
 
-    render(){
-        const {selectedSubscription} = this.state;
-        const duration = selectedSubscription && selectedSubscription.duration;
+    getTotal() {
+        const { selectedSubscription } = this.state;
         const totalPrice = domainDetails.price + (selectedSubscription && selectedSubscription.price) || 0;
+
+        return totalPrice;
+    }
+
+    renderCheckoutDetails() {
+        const {selectedSubscription} = this.state;
+
+        return(
+            <Fragment>
+                <div className={styles.menuHeader}>CHECKOUT</div>
+                <div className={styles.checkoutContent}>
+                    <p className={styles.intro}>Here’s what you are paying for</p>
+                    {this.renderItemBox(domainDetails)}
+                    {
+                        selectedSubscription && this.renderItemBox(selectedSubscription)
+                    }
+                </div>
+                <div className={styles.checkoutDetails}>
+                    <div className={styles.totalDiv}>
+                        <span>TOTAL</span>
+                        <span>{this.getTotal()}</span>
+                    </div>
+                    <button
+                        className={styles.payButton}
+                        onClick={() => this.setCheckoutStep('two')}
+                    >Pay N{this.getTotal()}</button>
+                </div>
+            </Fragment>
+        );
+    }
+
+    setCheckoutStep(step) {
+        step = step.toUpperCase();
+        if (!Object.keys(checkoutSteps).includes(step)) return;
+
+        this.setState({
+            checkoutStep: checkoutSteps[step]
+        });
+    }
+
+    renderRightColumnContent(step) {
+        switch(step){
+            case 'paymentResult':
+                return this.renderPaymentResult();
+            case 'paymentGateway':
+                return this.renderPaymentGateway();
+            default:
+                return this.renderCheckoutDetails();
+        }
+    }
+
+    renderPaymentGateway(){
+        return (
+            <Fragment>
+                <div className={styles.menuHeader}>CHECKOUT</div>
+                <div className={styles.paymentContent}>
+                    <div id='paystackEmbedContainer'></div>
+                </div>
+            </Fragment>
+        );
+    }
+
+    handlePayment() {
+        if (!window.PaystackPop) {
+            console.log('PaystackPop instance not available');
+            return;
+        }
+
+        const paymentDetails = {
+            key: paymentGateway.key,
+            email: paymentGateway.email,
+            amount: this.getTotal(),
+            container: 'paystackEmbedContainer',
+            callback: function (response) {
+                alert('successfully subscribed. transaction ref is ' + response.reference);
+            },
+        };
+
+        window.PaystackPop.setup(paymentDetails);
+    }
+
+    componentDidMount() {
+        if (!document.getElementById('paymentScript')) {
+            const paymentScript = document.createElement('script');
+            paymentScript.src = paymentGateway.scriptUrl;
+            paymentGateway.id = 'paymentScript';
+            document.body.appendChild(paymentScript);
+        }
+    }
+
+    componentDidUpdate() {
+        if(this.state.checkoutStep !== 'paymentGateway') return;
+        this.handlePayment();
+    }
+
+    render(){
+        const {selectedSubscription, checkoutStep} = this.state;
+        const duration = selectedSubscription && selectedSubscription.duration;
 
         return(
             <div className={styles.pageWrapper}>
                 <ReactSVG src='arrow-left-long.svg' className={styles.backArrow}/>
                 <div className={styles.leftColumn}>
+                    <div className={checkoutStep !== 'checkoutDetails' && styles.overlay}></div>
                     <div className={styles.subscription}>
                         <header>SELECT SUBSCRIPTION PLAN</header>
                         <div className={styles.subscriptionPlans}>
@@ -79,7 +185,9 @@ class Pricing extends Component{
                             </div>
                             <div className={composeClasses(styles.subscriptionBox, styles.priceBox, duration === 1 && styles.selected)}>
                                 <div className={styles.center}>
-                                    <span className={styles.radio}></span>
+                                    <div className={styles.radio}>
+                                        {duration === 1 && <ReactSVG src='mark.svg' />}
+                                    </div>
                                 </div>
                                 <div className={styles.price}>1,999</div>
                                 <div className={styles.billing}>MONTHLY BILLING</div>
@@ -92,7 +200,9 @@ class Pricing extends Component{
                             </div>
                             <div className={composeClasses(styles.subscriptionBox, styles.priceBox, duration === 12 && styles.selected)}>
                                 <div className={styles.center}>
-                                    <span className={styles.radio}></span>
+                                    <div className={styles.radio}>
+                                        {duration === 12 && <ReactSVG src='mark.svg'/>}
+                                    </div>
                                 </div>
                                 <div className={styles.price}>11,999</div>
                                 <div className={styles.billing}>12 MONTHS</div>
@@ -106,21 +216,7 @@ class Pricing extends Component{
                     </div>
                 </div>
                 <div className={styles.rightColumn}>
-                    <div className={styles.menuHeader}>CHECKOUT</div>
-                    <div className={styles.checkoutContent}>
-                        <p className={styles.intro}>Here’s what you are paying for</p>
-                        {this.renderItemBox(domainDetails)}
-                        {
-                            selectedSubscription && this.renderItemBox(selectedSubscription)
-                        }
-                    </div>
-                    <div className={styles.checkoutDetails}>
-                        <div className={styles.totalDiv}>
-                            <span>TOTAL</span>
-                            <span>{totalPrice}</span>
-                        </div>
-                        <button className={styles.payButton}>Pay N{totalPrice}</button>
-                    </div>
+                    {this.renderRightColumnContent(checkoutStep)}
                 </div>
             </div>
         );
