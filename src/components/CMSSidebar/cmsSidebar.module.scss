@@ -19,7 +19,7 @@
     padding: 5px;
     position: relative;
     transition: transform .3s linear;
-    z-index: 99;
+    z-index: 9999;
 
     &.close {
         transform: translateX(-100%);
@@ -80,6 +80,8 @@
     cursor: pointer;
     transform: translateX(-100%);
     transition: transform .3s linear;
+    z-index: 9999;
+    outline: none;
 }
 
 .showButton {
@@ -110,6 +112,7 @@
     padding: 5px;
     position: relative;
     transition: left .3s linear;
+    z-index: 9999;
 
     &.open {
         margin-left: 70px;
@@ -143,6 +146,7 @@
     margin: 24px 0 0 20px;
     outline: none;
     cursor: pointer;
+    z-index: 9999;
 }
 
 .publishStrip {
