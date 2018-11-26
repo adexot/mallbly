@@ -3,64 +3,65 @@ import {Link, } from 'react-router-dom';
 import ReactSVG from 'react-svg';
 import styles from './sidebar.module.scss';
 
-const menuList = [
-    'Music',
-    'Corporate',
-    'Wedding',
-    'Art & Design',
-    'Food & Drink',
-    'Health & Fitness',
-    'Photography',
-    'Fashion & Beauty',
-    'More categories'
-];
-
 const menuNav = [
     {
         img: 'music.svg',
-        title: 'Music'
+        title: 'Music',
+        key: 'music'
     },
     {
         img: 'corporate.svg',
-        title: 'Corporate'
+        title: 'Corporate',
+        key: 'corporate'
     },
     {
         img: 'wedding.svg',
-        title: 'Wedding'
+        title: 'Wedding',
+        key: 'wedding'
     },
     {
         img: 'art.svg',
-        title: 'Art & Design'
+        title: 'Art & Design',
+        key: 'art'
     },
     {
         img: 'food.svg',
-        title: 'Food & Drink'
+        title: 'Food & Drink',
+        key: 'food'
     },
     {
         img: 'health.svg',
-        title: 'Health & Fitness'
+        title: 'Health & Fitness',
+        key: 'health'
     },
     {
         img: 'photography.svg',
-        title: 'Photography'
+        title: 'Photography',
+        key: 'photo'
     },
     {
         img: 'fashion.svg',
-        title: 'Fashion & Beauty'
+        title: 'Fashion & Beauty',
+        key: 'fashion'
     },
     {
         img: 'more.svg',
-        title: 'More categories'
+        title: 'More categories',
+        key: 'more'
     }
 ];
 
-const Sidebar = ({active}) => (
+const Sidebar = ({active, onClickHandler}) => (
     <div className={styles.sidebar}>
         <ul>
             {
-                menuNav.map((menu, index) => (
+                menuNav.map((menu, index, menuArray) => (
                     <li key={index}>
-                        <Link to='/' className={active === menuList[index] ? styles.active : ''}>
+                        <Link onClick={(e) => {
+                            e.preventDefault();
+                            console.log(menu.title);
+                            if(typeof onClickHandler === 'function') onClickHandler(menu.key);
+                        }} to='/' className={menu.key === active ? styles.active : ''}>
                             <ReactSVG src={menu.img}/>
                             <span>{menu.title}</span>
                         </Link>

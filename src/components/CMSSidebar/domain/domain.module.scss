@@ -22,6 +22,7 @@
         border-radius: 7px;
         padding: 30px 10px 10px;
         margin-bottom: 30px;
+        transition: background-color .25s ease-in-out;
 
         input[type='radio'] {
             margin-right: 25px;
@@ -30,11 +31,11 @@
         label {
             font-weight: 500;
         }
-    }
 
-    .dark {
-        background-color: #4f4f4f;
-        color: #fff;
+        &:hover {
+            background-color: #4f4f4f;
+            color: #fff;
+        }
     }
 
     .light {

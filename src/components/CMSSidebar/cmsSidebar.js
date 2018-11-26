@@ -13,7 +13,6 @@ class CMSSidebar extends Component {
     constructor(props){
         super(props);
         this.state = {
-            isClose: false,
             activeSection: '',
             isFull: false
         };
@@ -22,16 +21,14 @@ class CMSSidebar extends Component {
     closeSidebar(e){
         e.preventDefault();
         this.setState({
-            isClose: true,
             activeSection: '',
         });
+        this.props.visibilityHandler();
     }
 
     openSidebar(e) {
         e.preventDefault();
-        this.setState({
-            isClose: false
-        });
+        this.props.visibilityHandler();
     }
 
     setFullSectionContent(name, value=false) {
@@ -73,7 +70,11 @@ class CMSSidebar extends Component {
     }
 
     render(){
-        const {isClose, activeSection, isFull } = this.state;
+        const {activeSection, isFull } = this.state;
+        const {visibilityHandler, isClose} = this.props;
+
+        console.log(isClose);
+
         return (
             <div className={styles.wrapper}>
                 <div className={composeClasses(styles.cmsSidebar, isClose ? styles.close : '')}>

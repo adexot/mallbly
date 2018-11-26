@@ -1,5 +1,15 @@
+.sidebarContainer {
+    width: 70px;
+    height: 100%;
+}
+
 .themeContainer {
-    margin-left: 70px;
     overflow-y: auto;
     height: 100vh;
+    margin-left: 70px;
+    transition: margin-left .3s linear;
+
+    &.full {
+        margin-left: 0;
+    }
 }

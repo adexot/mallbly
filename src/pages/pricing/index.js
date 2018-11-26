@@ -39,8 +39,8 @@ class Pricing extends Component{
         super(props);
 
         this.state = {
-            selectedSubscription: null,
             checkoutStep: checkoutSteps.ONE,
+            selectedSubscription: null,
         };
     }
 
@@ -98,6 +98,11 @@ class Pricing extends Component{
     }
 
     setCheckoutStep(step) {
+        if(!this.state.selectedSubscription){
+            // TODO: add a notification to let the user know, he/she needs to select a plan
+            return;
+        }
+
         step = step.toUpperCase();
         if (!Object.keys(checkoutSteps).includes(step)) return;
 
@@ -107,13 +112,15 @@ class Pricing extends Component{
     }
 
     renderRightColumnContent(step) {
-        switch(step){
-            case 'paymentResult':
-                return this.renderPaymentResult();
-            case 'paymentGateway':
-                return this.renderPaymentGateway();
-            default:
-                return this.renderCheckoutDetails();
+        switch (step) {
+          case "checkoutDetails":
+            return this.renderCheckoutDetails();
+          case "paymentResult":
+            return this.renderPaymentResult();
+          case "paymentGateway":
+            return this.renderPaymentGateway();
+          default:
+            return this.renderCheckoutDetails();
         }
     }
 
@@ -129,31 +136,46 @@ class Pricing extends Component{
     }
 
     handlePayment() {
-        if (!window.PaystackPop) {
-            console.log('PaystackPop instance not available');
-            return;
+        if(this.state.selectedSubscription){
+            if (!window.PaystackPop) {
+                console.log('PaystackPop instance not available');
+                const errorDiv = document.createElement('div');
+                errorDiv.textContent = 'Unable to connect to Payment gateway, please check your internet connection.';
+                errorDiv.setAttribute('style', 'background-color:#f55;border-radius:5px;font-size:14px;padding:10px;color:#fff;');
+                document.getElementById('paystackEmbedContainer').appendChild(errorDiv);
+                return;
+            }
+
+            const paymentDetails = {
+                key: paymentGateway.key,
+                email: paymentGateway.email,
+                amount: this.getTotal(),
+                container: 'paystackEmbedContainer',
+                callback: function (response) {
+                    alert('successfully subscribed. transaction ref is ' + response.reference);
+                }
+            };
+
+            window.PaystackPop.setup(paymentDetails);
         }
 
-        const paymentDetails = {
-            key: paymentGateway.key,
-            email: paymentGateway.email,
-            amount: this.getTotal(),
-            container: 'paystackEmbedContainer',
-            callback: function (response) {
-                alert('successfully subscribed. transaction ref is ' + response.reference);
-            },
-        };
-
-        window.PaystackPop.setup(paymentDetails);
+        // TODO: integrate a flash for notification
+        console.log('No subscription plan has been selected');
     }
 
     componentDidMount() {
+        // load the payment gateway script
         if (!document.getElementById('paymentScript')) {
             const paymentScript = document.createElement('script');
             paymentScript.src = paymentGateway.scriptUrl;
             paymentGateway.id = 'paymentScript';
             document.body.appendChild(paymentScript);
         }
+    }
+
+    componentWillUnmount() {
+        // remove the payment script from the DOM
+        if (document.getElementById('paymentScript')) document.removeChild('paymentScript');
     }
 
     componentDidUpdate() {
