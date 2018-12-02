@@ -18,20 +18,25 @@ class CMS extends Component {
         }));
     }
 
+    renderPublishStrip() {
+        const { activeSection } = this.state;
+        return (
+            <div className={composeClasses(styles.publishStrip, activeSection && styles.hide)}>
+                <span>Done editing? Publish your site now</span>
+                <button className={styles.publishButton} onClick={() => this.setFullSectionContent('domain')}>Publish Site</button>
+            </div>
+        );
+    }
+
     render(){
         return <Fragment>
             <div className={styles.sidebarContainer}>
-              <CMSSidebar
-                isClose={this.state.sidebarOpen}
-                visibilityHandler = {() =>
-                  this.toggleSidebar()
-              }/>
+              <CMSSidebar isClose={this.state.sidebarOpen} visibilityHandler={() => this.toggleSidebar()} />
             </div>
-            <div
-                className={composeClasses(styles.themeContainer, this.state.sidebarOpen && styles.full)}
-            >
+            <div className={composeClasses(styles.themeContainer, this.state.sidebarOpen && styles.full)}>
               <TestTheme />
             </div>
+            {this.renderPublishStrip()}
           </Fragment>;
     }
 }

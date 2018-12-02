@@ -59,24 +59,14 @@ class CMSSidebar extends Component {
         }
     }
 
-    renderPublishStrip(){
-        const {activeSection} = this.state;
-        return(
-            <div className={composeClasses(styles.publishStrip, activeSection && styles.hide)}>
-                <span>Done editing? Publish your site now</span>
-                <button className={styles.publishButton} onClick={() => this.setFullSectionContent('domain')}>Publish Site</button>
-            </div>
-        );
-    }
-
     render(){
         const {activeSection, isFull } = this.state;
-        const {visibilityHandler, isClose} = this.props;
+        const {isClose} = this.props;
 
         console.log(isClose);
 
         return (
-            <div className={styles.wrapper}>
+            <div className={activeSection && styles.wrapper}>
                 <div className={composeClasses(styles.cmsSidebar, isClose ? styles.close : '')}>
                     <ul className={styles.cmsidebar}>
                         <li className={styles.logo}>
@@ -128,7 +118,6 @@ class CMSSidebar extends Component {
                 >
                     <ReactSVG src='close.svg'/>
                 </button>
-                {this.renderPublishStrip()}
             </div>
         );
     }
