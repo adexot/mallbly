@@ -31,31 +31,35 @@ class CMS extends Component {
     }
 
     componentDidMount() {
-        window.addEventListener('mousedown', (e) => {
-            this.selectedPosition = {
-                x: this.state.sidebarOpen ? e.pageX - 50 : e.pageX,
-                y: e.pageY
-            }
-        });
+        document
+            .getElementById('themeContainer')
+            .addEventListener('mousedown', (e) => {
+                this.selectedPosition = {
+                    x: this.state.sidebarOpen ? e.pageX - 50 : e.pageX,
+                    y: e.pageY
+                }
+            });
 
-        window.addEventListener('mouseup', (e) => {
+        document
+            .getElementById('themeContainer')
+          .addEventListener('mouseup', e => {
             const selected = window.getSelection().toString();
-            if (selected !== '') {
-                console.log(selected);
-                const clientXY = {
-                    left: (e.pageX + this.selectedPosition.x) / 2,
-                    top: e.pageY - 70
-                };
-                console.log(clientXY);
-                this.setState({
-                    actionXY: clientXY
-                });
+            if (selected !== "") {
+              console.log(selected);
+              const clientXY = {
+                left: (e.pageX + this.selectedPosition.x) / 2,
+                top: e.pageY - 70
+              };
+              console.log(clientXY);
+              this.setState({
+                actionXY: clientXY
+              });
             } else {
-                const clientXY = { top: 0, left: 0 };
+              const clientXY = { top: 0, left: 0 };
 
-                this.setState({ actionXY: clientXY });
+              this.setState({ actionXY: clientXY });
             }
-        });
+          });
     }
 
     displayActionMenu(option = { top: 0, left: 0 }, show = false) {
@@ -82,7 +86,10 @@ class CMS extends Component {
             <div className={styles.sidebarContainer}>
               <CMSSidebar isClose={this.state.sidebarOpen} visibilityHandler={() => this.toggleSidebar()} />
             </div>
-            <div className={composeClasses(styles.themeContainer, this.state.sidebarOpen && styles.full)}>
+            <div
+                className={composeClasses(styles.themeContainer, this.state.sidebarOpen && styles.full)}
+                id='themeContainer'
+            >
               <TestTheme />
             </div>
             {this.displayActionMenu(actionXY, actionXY.left ? true : false)}
