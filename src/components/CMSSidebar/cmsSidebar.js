@@ -63,8 +63,6 @@ class CMSSidebar extends Component {
         const {activeSection, isFull } = this.state;
         const {isClose} = this.props;
 
-        console.log(isClose);
-
         return (
             <div className={activeSection && styles.wrapper}>
                 <div className={composeClasses(styles.cmsSidebar, isClose ? styles.close : '')}>

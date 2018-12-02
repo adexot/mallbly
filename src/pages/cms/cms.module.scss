@@ -52,3 +52,58 @@
         }
     }
 }
+
+.actionMenu {
+    display: none;
+    position: absolute;
+    background-color: #262626;
+    color: #fff;
+    border-radius: 30px;
+    padding: 5px 10px;
+    z-index: 99;
+    transform: translate(-100%, -50%);
+
+    &.show {
+        display: block;
+    }
+
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 48%;
+        transform: rotate(45deg);
+        width: 10px;
+        height: 10px;
+        background-color: #262626;
+        z-index: 9;
+
+    }
+
+    li {
+        display: inline-block;
+        cursor: pointer;
+
+        span {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 25px;
+            height: 25px;
+
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+        }
+
+        &:last-child {
+            border-left: 1px solid #ccc;
+        }
+    }
+}
