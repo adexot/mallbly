@@ -94,9 +94,10 @@ class CMS extends Component {
     renderImageChangeModal(){
         return <div className={styles.modalContainer} onClick={() => this.closeModal()}>
             <div className={styles.boxWrapper}>
-              <h3>Image Upload</h3>
+              <h3>Drag your Image here</h3>
+              <div>or</div>
               <div className={styles.imageInput}>
-                <label htmlFor="image">Upload</label>
+                <label htmlFor="image">Browse File</label>
                 <input type="file" name='image' id='image' className={styles.hide} />
               </div>
             </div>
