@@ -10,7 +10,8 @@ class CMS extends Component {
         super(props);
         this.state = {
             sidebarOpen: false,
-            actionXY: {}
+            actionXY: {},
+            openModal: false
         };
     }
 
@@ -18,6 +19,12 @@ class CMS extends Component {
         this.setState(prevState => ({
             sidebarOpen: !prevState.sidebarOpen
         }));
+    }
+
+    closeModal(){
+        this.setState({
+            openModal: false
+        });
     }
 
     renderPublishStrip() {
@@ -34,6 +41,12 @@ class CMS extends Component {
         document
             .getElementById('themeContainer')
             .addEventListener('mousedown', (e) => {
+                if(e.target.tagName.toLowerCase() === 'img'){
+                    this.setState({
+                        openModal: true
+                    });
+                    return;
+                }
                 this.selectedPosition = {
                     x: this.state.sidebarOpen ? e.pageX - 50 : e.pageX,
                     y: e.pageY
@@ -78,9 +91,20 @@ class CMS extends Component {
         )
     }
 
+    renderImageChangeModal(){
+        return <div className={styles.modalContainer} onClick={() => this.closeModal()}>
+            <div className={styles.boxWrapper}>
+              <h3>Image Upload</h3>
+              <div className={styles.imageInput}>
+                <label htmlFor="image">Upload</label>
+                <input type="file" name='image' id='image' className={styles.hide} />
+              </div>
+            </div>
+          </div>;
+    }
 
     render(){
-        const {actionXY} = this.state;
+        const {actionXY, openModal} = this.state;
 
         return <Fragment>
             <div className={styles.sidebarContainer}>
@@ -93,7 +117,8 @@ class CMS extends Component {
               <TestTheme />
             </div>
             {this.displayActionMenu(actionXY, actionXY.left ? true : false)}
-            {this.renderPublishStrip()}
+            {openModal && this.renderImageChangeModal()}
+            {/* {this.renderPublishStrip()} */}
           </Fragment>;
     }
 }
