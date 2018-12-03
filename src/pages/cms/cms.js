@@ -1,5 +1,6 @@
 import React, {Component, Fragment } from 'react';
 import ReactSVG from "react-svg";
+import Dropzone from 'react-dropzone';
 import CMSSidebar from '../../components/CMSSidebar';
 import styles from './cms.module.scss'
 import TestTheme from '../../themes/testTheme';
@@ -11,7 +12,7 @@ class CMS extends Component {
         this.state = {
             sidebarOpen: false,
             actionXY: {},
-            openModal: false
+            openModal: true
         };
     }
 
@@ -91,16 +92,22 @@ class CMS extends Component {
         )
     }
 
+    onDropHandler(file) {
+        console.log(file);
+    }
+
     renderImageChangeModal(){
         return <div className={styles.modalContainer} onClick={() => this.closeModal()}>
-            <div className={styles.boxWrapper}>
-              <h3>Drag your Image here</h3>
-              <div>or</div>
-              <div className={styles.imageInput}>
-                <label htmlFor="image">Browse File</label>
-                <input type="file" name='image' id='image' className={styles.hide} />
+            <Dropzone className={styles.boxWrapper} onDrop={e => this.onDropHandler(e)}>
+              <div className={styles.boxWrapper}>
+                <h3>Drag your Image here</h3>
+                <div>or</div>
+                <div className={styles.imageInput}>
+                  <label htmlFor="image">Browse File</label>
+                  <input type="file" name="image" id="image" className={styles.hide} />
+                </div>
               </div>
-            </div>
+            </Dropzone>
           </div>;
     }
 
