@@ -1,4 +1,5 @@
 import React, {Component, Fragment} from 'react';
+import {Link} from 'react-router-dom'
 import ReactSVG from 'react-svg';
 import styles from './pricing.module.scss';
 import {composeClasses} from '../../utils';
@@ -187,61 +188,76 @@ class Pricing extends Component{
         const {selectedSubscription, checkoutStep} = this.state;
         const duration = selectedSubscription && selectedSubscription.duration;
 
-        return(
-            <div className={styles.pageWrapper}>
-                <ReactSVG src='arrow-left-long.svg' className={styles.backArrow}/>
-                <div className={styles.leftColumn}>
-                    <div className={checkoutStep !== 'checkoutDetails' && styles.overlay}></div>
-                    <div className={styles.subscription}>
-                        <header>SELECT SUBSCRIPTION PLAN</header>
-                        <div className={styles.subscriptionPlans}>
-                            <div className={styles.subscriptionBox}>
-                                <ul>
-                                    <li>Unlimited Bandwidth</li>
-                                    <li>Unlimited Storage</li>
-                                    <li>Mobile-Optimized Website</li>
-                                    <li>Website Metrics</li>
-                                    <li>SSL Security Included</li>
-                                    <li>24/7 Customer Support</li>
-                                </ul>
-                            </div>
-                            <div className={composeClasses(styles.subscriptionBox, styles.priceBox, duration === 1 && styles.selected)}>
-                                <div className={styles.center}>
-                                    <div className={styles.radio}>
-                                        {duration === 1 && <ReactSVG src='mark.svg' />}
-                                    </div>
-                                </div>
-                                <div className={styles.price}>1,999</div>
-                                <div className={styles.billing}>MONTHLY BILLING</div>
-                                <div className={styles.grey}>NO SAVINGS</div>
-                                <div className={styles.buttonDiv}>
-                                    <button onClick={() => this.handleSubscriptionSelection(subscriptionPlans.MONTHLY)}>
-                                    Select Plan
-                                    </button>
-                                </div>
-                            </div>
-                            <div className={composeClasses(styles.subscriptionBox, styles.priceBox, duration === 12 && styles.selected)}>
-                                <div className={styles.center}>
-                                    <div className={styles.radio}>
-                                        {duration === 12 && <ReactSVG src='mark.svg'/>}
-                                    </div>
-                                </div>
-                                <div className={styles.price}>11,999</div>
-                                <div className={styles.billing}>12 MONTHS</div>
-                                <div className={styles.yellow}>SAVE N11,989</div>
-                                <div className={styles.buttonDiv}>
-                                    <button onClick={() => this.handleSubscriptionSelection(subscriptionPlans.YEARLY)}>
-                                    Select Plan</button>
-                                </div>
-                            </div>
-                        </div>
+        return <div className={styles.pageWrapper}>
+            <Link to="/" className={styles.backArrow}>
+              <ReactSVG src="arrow-left-long.svg" />
+            </Link>
+            <div className={styles.leftColumn}>
+              <div className={checkoutStep !== "checkoutDetails" && styles.overlay} />
+              <div className={styles.subscription}>
+                <header>SELECT SUBSCRIPTION PLAN</header>
+                <div className={styles.subscriptionPlans}>
+                  <div className={styles.subscriptionBox}>
+                    <ul>
+                      <li>Unlimited Bandwidth</li>
+                      <li>Unlimited Storage</li>
+                      <li>Mobile-Optimized Website</li>
+                      <li>Website Metrics</li>
+                      <li>SSL Security Included</li>
+                      <li>24/7 Customer Support</li>
+                    </ul>
+                  </div>
+                  <div className={composeClasses(styles.subscriptionBox, styles.priceBox, duration === subscriptionPlans.MONTHLY.duration && styles.selected)}>
+                    <div className={styles.center}>
+                      <div className={styles.radio}>
+                        {duration === 1 && <ReactSVG src="mark.svg" />}
+                      </div>
                     </div>
+                    <div className={styles.price}>1,999</div>
+                    <div className={styles.billing}>
+                      MONTHLY BILLING
+                    </div>
+                    <div className={styles.grey}>NO SAVINGS</div>
+                    <div className={styles.buttonDiv}>
+                      <button
+                        onClick={() =>
+                          this.handleSubscriptionSelection(
+                            subscriptionPlans.MONTHLY
+                          )
+                        }
+                      >
+                        Select Plan
+                      </button>
+                    </div>
+                  </div>
+                  <div className={composeClasses(styles.subscriptionBox, styles.priceBox, duration === subscriptionPlans.YEARLY.duration && styles.selected)}>
+                    <div className={styles.center}>
+                      <div className={styles.radio}>
+                        {duration === 12 && <ReactSVG src="mark.svg" />}
+                      </div>
+                    </div>
+                    <div className={styles.price}>11,999</div>
+                    <div className={styles.billing}>12 MONTHS</div>
+                    <div className={styles.yellow}>SAVE N11,989</div>
+                    <div className={styles.buttonDiv}>
+                      <button
+                        onClick={() =>
+                          this.handleSubscriptionSelection(
+                            subscriptionPlans.YEARLY
+                          )
+                        }
+                      >
+                        Select Plan
+                      </button>
+                    </div>
+                  </div>
                 </div>
-                <div className={styles.rightColumn}>
-                    {this.renderRightColumnContent(checkoutStep)}
-                </div>
+              </div>
             </div>
-        );
+            <div className={styles.rightColumn}>
+              {this.renderRightColumnContent(checkoutStep)}
+            </div>
+          </div>;
     }
 }
 
